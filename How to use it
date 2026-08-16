@@ -1,0 +1,15 @@
+Step-by-step: How to use the Windows Repair Batch File
+
+    1. Download or save the batch file a. Save fix system.bat somewhere easy to find, such as your Desktop or Downloads folder. b. Do not change the .bat extension.
+    2. Close unnecessary applications a. Close programs you are currently using. b. The scan and repair process can take some time, so avoid shutting down or restarting the computer while it is running.
+    3. Run the batch file as Administrator a. Locate fix system.bat. b. Right-click the file. c. Select Run as administrator. d. If Windows displays a User Account Control (UAC) prompt, select Yes.
+    4. Review the system information a. The script will first run SYSTEMINFO. b. This displays information about your Windows installation, computer, processor, memory, network configuration, and other system details. c. You can review this information, but you do not need to make any changes.
+    5. Allow System File Checker (SFC) to run a. The script will execute: SFC /scannow b. SFC will scan protected Windows system files for corruption or missing files. c. If corrupted files are found, Windows will attempt to repair them automatically. d. Do not close the Command Prompt window while the scan is running. e. The scan may take several minutes.
+    6. Review the SFC result a. When SFC finishes, it will provide a message indicating whether:
+        a. No integrity violations were found.
+        b. Corrupted files were found and successfully repaired.
+        c. Corrupted files were found but some could not be repaired. b. Take note of this result before continuing.
+    7. Allow DISM to run a. The script will then execute: DISM /Online /Cleanup-Image /RestoreHealth b. DISM performs a deeper repair of the Windows component store and operating-system image. c. This process can take significantly longer than SFC. d. The progress percentage may appear to pause for an extended period. Do not assume it has frozen or close the window.
+    8. Wait for DISM to complete a. Allow the command to reach 100% and display its final result. b. A successful repair should indicate that the restore operation completed successfully.
+    9. Review the final output a. Once DISM finishes, the batch file will execute the pause command. b. This keeps the Command Prompt window open so you can read the results. c. Review the messages from both SFC and DISM.
+    10. Restart the computer a. If repairs were performed, restart Windows after the script completes. b. A restart allows repaired system components and files to be fully loaded.
